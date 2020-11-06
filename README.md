@@ -7,3 +7,5 @@ This repository contains examples that demonstrate simple programs written using
 ## example_1 (fortran calls c++ function)
 In this example, the main program is written in fortran. The fortran code generates data (here a simple sequence of numbers from `1` to `N*N*N`) and calls a c++ function to which it passes the data to visualize them on a cube using VTK libraries. 
 
+![](example_1.gif)
+
