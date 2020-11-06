@@ -1,6 +1,6 @@
 # Binding fortran and C++ codes
 
-This repository contains examples that demonstrate simple programs written using both fortran and c++ languages. While the popularity of c++ is nowadays indesputably higher (mainly because of the wealth of freely available libraries and the ease of their integration with c++ codes), many high performance computing simulations (including mines) still remain written in fortran (the language 99.9% of my friends never heard of before). Therefore finding ways for binding the two languages is a great way how to get the best of both of them.
+This repository contains examples that demonstrate simple programs written using both fortran and c++ languages. While the popularity of c++ is nowadays indisputably higher (mainly because of the wealth of freely available libraries and the ease of their integration with c++ codes), many high performance computing simulations still remain written in fortran. Therefore finding ways for binding the two languages is a great way how to get the best of both of them.
 
 # Examples
 
