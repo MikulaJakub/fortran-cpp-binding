@@ -7,7 +7,7 @@ A wrote a few examples below that demonstrate how Fortran codes can be binded wi
 # Examples
 
 ## example_1 (Fortran calls C++ function)
-In this example, the main program is written in Fortran. The Fortran code generates data (here a simple sequence of numbers from `1` to `N*N*N`) and calls a C++ function to which it passes the data to visualize them on a cube using VTK libraries. 
+In this example, the main program is written in Fortran. The Fortran code generates data (here a simple sequence of numbers from `1` to `N*N*N`) and calls a C++ function to which it passes the data to visualize them on a cube using the VTK libraries. 
 
 ### compile the code
 `mkdir build && cd build && cmake .. && make`
