@@ -2,6 +2,8 @@
 
 This repository contains examples that demonstrate simple programs written using both fortran and c++ languages. While the popularity of c++ is nowadays indisputably higher (mainly because of the wealth of freely available libraries and the ease of their integration with c++ codes), many high performance computing simulations still remain written in fortran. Therefore finding ways for binding the two languages is a great way how to get the best of both of them.
 
+A wrote a few examples below that demonstrate how fortran codes can be binded with c++ to visualize the data using the VTK libraries. These ideas can be easily translated to larger codes with only a few lines of extra fortran code to be edited. 
+
 # Examples
 
 ## example_1 (fortran calls c++ function)
