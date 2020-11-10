@@ -15,6 +15,7 @@ In this example, the main program is written in Fortran. The Fortran code genera
 ### run the code
 `cd ../bin && ./a.out`
 
+### demonstration
 The program will ask for an integer `N`. In the demonstration below, `N=5`, the grid of 5x5x5 points is visualized.
 
 ![](figures/example_1.gif)
