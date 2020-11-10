@@ -21,4 +21,4 @@ The program will ask for an integer `N`. In the demonstration below, `N=5`, the 
 ![](figures/example_1.gif)
 
 ## example_2 (Fortran calls C++ functions for ipc using shared memory)
-
+This implementation is useful for binding a standalone fortran code (possibly in MPI) with the VTK visualization libraries through interprocess communication using the shared memory. The shared memory segment is initialized by a C++ standalone code (or a function) that then calls the fortran executable through the system call. The fortran code calls a C++ function to attach and pass data to the shared memory segment that are read and processed (visualized) by the C++ code and VTK libraries. 
