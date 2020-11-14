@@ -3,7 +3,7 @@
 
 /* DESCRIPTION:
 	Main program creates a shared memory segments.
-	It then calls an external executable (that might have been written in fortran) 
+	It then calls an external executable (that might have been written in Fortran) 
 	using system call with the input argument containing the id of the shared memory.
 	Fortran calls a C++ function to which it passes the data and the c++ code shares 
 	the data on the shared memory segment. The main program can then read the data
@@ -145,8 +145,9 @@ int main(int argc, char *argv[])
 	data->SetNumberOfTuples(n_points*n_points*n_points);
 
 // Run on a separate thread to interacto with GUI
-//	run();
-	thread myThread(run);
+// I commented this feature now, as VTK is not multithread safe
+	run();
+//	thread myThread(run);
 
 	renderWindowInteractor->Initialize();
 	renderWindowInteractor->Start();
