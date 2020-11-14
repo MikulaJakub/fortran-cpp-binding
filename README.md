@@ -11,7 +11,6 @@ In this implementation, the main program is written in Fortran. The Fortran code
 
 ### compile the code
 enter example_1 directory,
-
 `mkdir build && cd build && cmake .. && make`
 
 ### run the code
@@ -27,7 +26,6 @@ This implementation is useful for binding a standalone fortran code (possibly ru
 
 ### compile the code
 enter example_2 directory, 
-
 `mkdir build && cd build && cmake .. && make`
 
 ### run the code
