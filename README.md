@@ -10,6 +10,8 @@ A wrote a few examples below that demonstrate how Fortran codes can be binded wi
 In this implementation, the main program is written in Fortran. The Fortran code generates data (here a simple sequence of numbers from `1` to `N*N*N`) and calls a C++ function to which it passes the data to visualize them on a cube using the VTK libraries. 
 
 ### compile the code
+enter example_1 directory,
+
 `mkdir build && cd build && cmake .. && make`
 
 ### run the code
@@ -24,6 +26,8 @@ The program will ask for an integer `N`. In the demonstration below, `N=5`, the 
 This implementation is useful for binding a standalone fortran code (possibly running in MPI) with the VTK visualization toolkit through the interprocess communication using the shared memory. The shared memory segment is initialized by a C++ standalone code (or a function) that then calls the fortran executable (standalone) through the system call. The fortran code calls a C++ function to attach and pass data to the shared memory segment that are then read and processed by the C++ main code.  
 
 ### compile the code
+enter example_2 directory, 
+
 `mkdir build && cd build && cmake .. && make`
 
 ### run the code
