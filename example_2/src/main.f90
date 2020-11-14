@@ -55,7 +55,7 @@ character(LEN=100) :: arg1, arg2
         ENDDO
         ENDDO
 
-        ! Send the result to serve to plot through the shared memory segment
+        ! Send the results to server through the shared memory segment
         CALL send_data_to_plot(data, N, id)
 
 
