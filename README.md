@@ -13,7 +13,7 @@ In this implementation, the main program is written in Fortran. The Fortran code
 `mkdir build && cd build && cmake .. && make`
 
 ### run the code
-`cd ../bin && ./a.out`
+`cd ../bin && ./a.out 5`
 
 ### demonstration
 The program will ask for an integer `N`. In the demonstration below, `N=5`, the grid of 5x5x5 points is visualized.
@@ -24,7 +24,7 @@ The program will ask for an integer `N`. In the demonstration below, `N=5`, the 
 This implementation is useful for binding a standalone fortran code (possibly running in MPI) with the VTK visualization toolkit through the interprocess communication using the shared memory. The shared memory segment is initialized by a C++ standalone code (or a function) that then calls the fortran executable (standalone) through the system call. The fortran code calls a C++ function to attach and pass data to the shared memory segment that are then read and processed by the C++ main code.  
 
 ### run the code
-`cd ../bin && ./a.out`
+`cd ../bin && ./a.out 11`
 
 ### demonstration
 
