@@ -42,7 +42,7 @@ void send_data_to_plot_(double* data_ptr, int* N_ptr, int* id_ptr)
     for (int i=0; i<N*N*N; i++)
     {
         *(shared_memory+i) = *(data_ptr+i); 
-        std::cout << *(data_ptr+i) << std::endl;
+//        std::cout << *(data_ptr+i) << std::endl;
 
     } 
    

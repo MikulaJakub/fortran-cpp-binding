@@ -37,7 +37,7 @@ character(LEN=100) :: arg1, arg2
     
 
     ! Perform some calculations in a loop
-    DO,ijk=1,5,1
+    DO,ijk=1,10,1
         iterator = ijk             
 
         DO, i=1,N

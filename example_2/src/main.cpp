@@ -43,9 +43,8 @@
 #include <vtkPolyDataMapper.h>
 #include <vtkPolyData.h>
 
-#include <vtkCallbackCommand.h>
-#include <vtkInteractorStyle.h>
-#include <vtkCamera.h>
+#include <thread>
+#include <unistd.h>
 
 #define RESET       "\033[0m"
 #define BOLDRED     "\033[1m\033[31m"
@@ -63,6 +62,7 @@ VTK_MODULE_INIT(vtkRenderingFreeType)	//this is required to plot the colorbar!
 
 using namespace std;
 
+void run();
 std::string exec(const char* cmd);
 void plot_unstructured_grid();
 int id; // shared memory id
@@ -101,8 +101,6 @@ int main(int argc, char *argv[])
 
 	renderWindowInteractor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
 	renderWindowInteractor->SetRenderWindow(renderWindow);
-
-	renderWindowInteractor->Initialize();
 
     // (0)  allocate VTK grid    
 	std::cout << "Allocate vtk grid" << std::endl;
@@ -146,6 +144,25 @@ int main(int argc, char *argv[])
 	data->SetNumberOfComponents(1);
 	data->SetNumberOfTuples(n_points*n_points*n_points);
 
+// Run on a separate thread to interacto with GUI
+//	run();
+	thread myThread(run);
+
+	renderWindowInteractor->Initialize();
+	renderWindowInteractor->Start();
+	
+
+	cout <<BOLDGREEN<< "Main program has finished!" <<RESET<< endl;
+
+	return EXIT_SUCCESS;
+}
+
+void run()
+{
+
+	// Wait to make sure that render window is initialized in time
+	sleep(1);
+
 	// (1) 	create a shared memory segment
 	key_t key;
 	size_t size;
@@ -186,15 +203,6 @@ int main(int argc, char *argv[])
 
 	// destroy the shared memory segment
 	shmctl(id,IPC_RMID,NULL);	
-
-
-    // Start render window interactor at the end when all data is passed
-    // Ideally, interactor is possible during the data passing
-    renderWindowInteractor->Start();	
-
-	cout <<BOLDGREEN<< "Main program has finished!" <<RESET<< endl;
-
-	return EXIT_SUCCESS;
 }
 
 // Read standard output of the executable file
@@ -289,8 +297,8 @@ void plot_unstructured_grid()
 	renderer->SetBackground(0.1, 0.3, 0.7);
 
 	// render the scene
+	renderer->ResetCamera();
 	renderWindow->Render();
-//	renderWindowInteractor->Initialize();
 
     return;
 }
