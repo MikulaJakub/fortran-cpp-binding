@@ -23,6 +23,9 @@ The program will ask for an integer `N`. In the demonstration below, `N=5`, the 
 ## example_2 (Fortran calls C++ functions for ipc using shared memory)
 This implementation is useful for binding a standalone fortran code (possibly running in MPI) with the VTK visualization toolkit through the interprocess communication using the shared memory. The shared memory segment is initialized by a C++ standalone code (or a function) that then calls the fortran executable (standalone) through the system call. The fortran code calls a C++ function to attach and pass data to the shared memory segment that are then read and processed by the C++ main code.  
 
+### compile the code
+`mkdir build && cd build && cmake .. && make`
+
 ### run the code
 `cd ../bin && ./a.out 11`
 
