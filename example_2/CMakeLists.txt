@@ -16,8 +16,9 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_BUILD_TYPE Release)
 cmake_policy(SET CMP0071 NEW)
 
-# set gcc flags
+# set compiler flags
 set(CMAKE_CXX_FLAGS "-Wall -O3")
+set(CMAKE_Fortran_FLAGS "-Wall -O3")
 
 get_filename_component(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR} DIRECTORY)
 message(STATUS "Project root folder:" ${PROJECT_SOURCE_DIR})
