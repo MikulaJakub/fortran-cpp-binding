@@ -12,6 +12,7 @@ set(PROJECT_NAME "fortran-cpp")
 project(${PROJECT_NAME} C CXX Fortran)
 
 # set C++11
+# currently seems to work with gfortran, but not with ifort
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_BUILD_TYPE Release)
 cmake_policy(SET CMP0071 NEW)

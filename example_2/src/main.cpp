@@ -65,8 +65,10 @@ using namespace std;
 void run();
 std::string exec(const char* cmd);
 void plot_unstructured_grid();
+
 int id; // shared memory id
 int n_points;
+int n_cells;
 vtkSmartPointer<vtkDoubleArray> data; 
 vtkSmartPointer<vtkUnstructuredGrid> grid;
 vtkSmartPointer<vtkRenderer> renderer;
@@ -79,7 +81,7 @@ int main(int argc, char *argv[])
     cout << ' ' << endl;
 	cout <<BOLDYELLOW<< "Main program has started ..." <<RESET<< endl;
         
-    int n_cells = 0;
+    n_cells = 0;
     char* p;
     if (argc > 1)
         n_cells = strtol(argv[1], &p, 10);
@@ -91,6 +93,27 @@ int main(int argc, char *argv[])
     }
 
 	n_points = n_cells + 1; // number of grid points
+
+
+// Run on a separate thread to interacto with GUI
+// I commented this feature now, as VTK is not multithread safe
+	run();
+//	thread myThread(run);
+
+//	renderWindowInteractor->Initialize();
+//	renderWindowInteractor->Start();
+		
+
+	cout <<BOLDGREEN<< "Main program has finished!" <<RESET<< endl;
+
+	return EXIT_SUCCESS;
+}
+
+void run()
+{
+	cout << "Start run() function ... " << endl;
+	// Wait to make sure that render window is initialized in time
+	sleep(1);
 
     // (-1) prepare the window to plot the data
 	renderer = vtkSmartPointer<vtkRenderer>::New();
@@ -144,25 +167,6 @@ int main(int argc, char *argv[])
 	data->SetNumberOfComponents(1);
 	data->SetNumberOfTuples(n_points*n_points*n_points);
 
-// Run on a separate thread to interacto with GUI
-// I commented this feature now, as VTK is not multithread safe
-	run();
-//	thread myThread(run);
-
-	renderWindowInteractor->Initialize();
-	renderWindowInteractor->Start();
-	
-
-	cout <<BOLDGREEN<< "Main program has finished!" <<RESET<< endl;
-
-	return EXIT_SUCCESS;
-}
-
-void run()
-{
-
-	// Wait to make sure that render window is initialized in time
-	sleep(1);
 
 	// (1) 	create a shared memory segment
 	key_t key;
@@ -300,6 +304,7 @@ void plot_unstructured_grid()
 	// render the scene
 	renderer->ResetCamera();
 	renderWindow->Render();
+	renderWindowInteractor->Start();
 
     return;
 }
